@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 19, 2020 at 10:01 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Host: localhost:3306
+-- Generation Time: Aug 13, 2021 at 04:31 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,8 +33,16 @@ CREATE TABLE `transaction` (
   `sender` text NOT NULL,
   `receiver` text NOT NULL,
   `balance` int(8) NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`sno`, `sender`, `receiver`, `balance`, `datetime`) VALUES
+(1, 'Amit', 'Praful ', 12500, '2021-08-12 22:19:21'),
+(2, 'Amit', 'Shivalika ', 12500, '2021-08-12 22:19:39');
 
 -- --------------------------------------------------------
 
@@ -43,26 +52,27 @@ CREATE TABLE `transaction` (
 
 CREATE TABLE `users` (
   `id` int(3) NOT NULL,
-  `name` text NOT NULL,
+  `fname` text NOT NULL,
+  `lname` text NOT NULL,
   `email` varchar(30) NOT NULL,
   `balance` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `balance`) VALUES
-(1, 'Salman', 'khan@gmail.com', 50000),
-(2, 'Kiara', 'advani@gmail.com', 30000),
-(3, 'Shahrukh', 'shah@gmail.com', 40000),
-(4, 'Priyanka', 'chopra@gmail.com', 50000),
-(5, 'Shahid', 'kapoor@gmail.com', 40000),
-(6, 'Ranbir', 'singh@gmail.com', 30000),
-(7, 'Deepika', 'padukone@gmail.com', 50000),
-(8, 'Juhi', 'chawla@gmail.com', 40000),
-(9, 'Nick', 'jonas@gmail.com', 30000),
-(10, 'Taapsee', 'pannu@gmail.com', 50000);
+INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `balance`) VALUES
+(1, 'Praful ', 'Kumar', 'prafu@gmail.com', 52500),
+(2, 'Saurav', 'Parapurath', 'saurav@gmail.com', 42000),
+(3, 'Shivalika ', 'Pillai', 'spillai@gmail.com', 51500),
+(4, 'Lina ', 'Pawar', 'lpawar@gmail.com', 45000),
+(5, 'Siddhant ', 'Roy', 'sroy@gmail.com', 41000),
+(6, 'Niranjan', 'Khedkar', 'nkhedkar@gmail.com', 37000),
+(7, 'Rasika', 'Bagade', 'rbagade@gmail.com', 40000),
+(8, 'Sanjana', 'Barhate', 'sbarhate@gmail.com', 37500),
+(9, 'Rohan', 'Lokhande', 'rlokhande@gmail.com', 37500),
+(10, 'Amit', 'Naik', 'anaik@gmail.com', 35000);
 
 --
 -- Indexes for dumped tables
@@ -88,13 +98,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `sno` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
